@@ -1,4 +1,4 @@
-"""一条命令演示摄取、混合检索、风险判定与指标计算。"""
+"""一条命令展示公开版的摄取、混合检索、风险判定与指标计算。"""
 
 from pathlib import Path
 
@@ -19,10 +19,9 @@ def main() -> None:
     sources = [hit.source for hit in hits]
     relevant = {"evaluation.md"}
     print(f"Recall@3={recall_at_k(sources, relevant, 3):.2f}  MRR={mean_reciprocal_rank(sources, relevant):.2f}")
-    tool = DraftNoteTool(Path("/tmp/jarvis-demo-output"))
+    tool = DraftNoteTool(Path("/tmp/jarvis-agent-output"))
     print(f"工具 {tool.spec.name}：{PermissionPolicy().decide(tool.risk)}；{tool.preview(title='检索结论', content='示例内容')}")
 
 
 if __name__ == "__main__":
     main()
-

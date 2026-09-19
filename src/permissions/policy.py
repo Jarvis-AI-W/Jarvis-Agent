@@ -25,8 +25,7 @@ class PermissionPolicy:
             return "ask"
         if self.mode is PermissionMode.FULL:
             return "ask" if risk.action == "destructive" else "allow"
-        # SMART：仅自动执行范围受限、可恢复、低影响的写操作。
-        if risk.action == "write" and risk.scope == "demo" and risk.reversible and risk.impact == "low":
+        # SMART：仅自动执行范围受限、可恢复、低影响的工作区写操作。
+        if risk.action == "write" and risk.scope == "workspace" and risk.reversible and risk.impact == "low":
             return "allow"
         return "ask"
-

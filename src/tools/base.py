@@ -17,7 +17,7 @@ class ToolSpec:
 @dataclass(frozen=True)
 class ToolRisk:
     action: Literal["read", "write", "network", "destructive"]
-    scope: Literal["demo", "workspace", "external"]
+    scope: Literal["workspace", "external"]
     reversible: bool
     impact: Literal["low", "high"]
 
@@ -33,4 +33,3 @@ class Tool(ABC):
     @abstractmethod
     def run(self, **arguments: object) -> str:
         """返回给 Agent 的观察结果。"""
-
